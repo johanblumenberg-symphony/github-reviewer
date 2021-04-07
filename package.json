@@ -1,0 +1,16 @@
+{
+  "name": "gmail-reviewer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/johanblumenberg-symphony/gmail-reviewer.git",
+  "author": "johanblumenberg <johan.blumenberg@symphony.com>",
+  "license": "MIT",
+  "scripts": {
+    "build:gmail-labeler": "mkdir -p build/gmail-labeler && cp src/common/* src/gmail-labeler/* src/gmail-labeler/.clasp.json build/gmail-labeler",
+    "build:gmail-addon": "mkdir -p build/gmail-addon && cp src/common/* src/gmail-addon/* src/gmail-addon/.clasp.json build/gmail-addon",
+    "build": "yarn run build:gmail-addon && yarn run build:gmail-labeler"
+  },
+  "dependencies": {
+    "@google/clasp": "^2.3.0"
+  }
+}
