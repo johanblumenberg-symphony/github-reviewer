@@ -1,5 +1,13 @@
 function parseHtml(html) {
-  var doc = Xml.parse(html.replace(/<g-emoji [^>]*>[^<]*<\/g-emoji>/g, ''), true);
+  // Remove all emojis, that cannot be parsed by the XmlService
+  html = html.replace(/<g-emoji [^>]*>[^<]*<\/g-emoji>/g, '');
+
+  // Remove unicode characters, that cannot be parsed by XmlService
+  //  - https://mothereff.in/regexpu
+  //  Compiled from /[\u{1F400}-\u{1F4FF}]/ug
+  html = html.replace(/(?:\uD83D[\uDC00-\uDCFF])/g, '');
+
+  var doc = Xml.parse(html, true);
   return XmlService.parse(doc.html.body.toXmlString())
 }
 
