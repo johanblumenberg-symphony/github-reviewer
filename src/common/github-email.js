@@ -4,8 +4,8 @@ function parseHtml(html) {
 
   // Remove unicode characters, that cannot be parsed by XmlService
   //  - https://mothereff.in/regexpu
-  //  Compiled from /[\u{1F400}-\u{1F4FF}]/ug
-  html = html.replace(/(?:\uD83D[\uDC00-\uDCFF])/g, '');
+  //  Compiled from /[\u{1F400}-\u{1F6FF}]/ug
+  html = html.replace(/(?:\uD83D[\uDC00-\uDEFF])/g, '');
 
   var doc = Xml.parse(html, true);
   return XmlService.parse(doc.html.body.toXmlString())
